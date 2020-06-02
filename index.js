@@ -34,7 +34,10 @@ wss.on("connection", (ws, req) => {
   //Call PostLoad
   PageLoader.Defined.postload[ID.toString()]({
     GetObject: selector => DocumentModel.GetObject(ID, selector, ObjectModel, Response, wss),
-    GetObjectById: id => DocumentModel.GetObjectById(id, ID, ObjectModel, Response, wss)
+    GetObjectById: id => DocumentModel.GetObjectById(id, ID, ObjectModel, Response, wss),
+    get body() {
+      return DocumentModel.GetObject(ID, "body", ObjectModel, Response, wss);
+    }
   });
 
   //Define value return function
