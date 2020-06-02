@@ -1,11 +1,20 @@
 define("preload", function (res) {
-  res.Echo("<input id='i'><button id='a'>Submit</button>");
+  database = res.GetDatabase();
+  if (!database.msgs) database.msgs = []; if (!database.clbs) database.clbs = [];
+  res.Echo("<input id='i'><button id='a'>Post</button><div id='b'></div>");
 });
 define("postload", function (document) {
-  document.GetObjectById("a").OnClick(_=>{
-    document.GetObjectById("i").Value(v=>{
-      document.GetObjectById("i").SetValue("");
-      console.log(v);
-    });
+  var name = "";
+  database.clbs.push(_ => {
+    var s = "";
+    for (var o of database.msgs) s += "<p>" + o + "</p>";
+    document.GetObjectById("b").innerHTML = s;
+  });
+  document.GetObjectById("a").onclick(_=>{
+    document.GetObjectById("i").value.clb = v=>{
+      document.GetObjectById("i").value = "";
+      if (name == "") name = v; else database.msgs.push(`${name}: ${v}`);
+      for (var o of database.clbs) o();
+    };
   });
 })
