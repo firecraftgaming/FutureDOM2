@@ -1,6 +1,4 @@
-var dataStore = {
-
-}
+let dataStore = {};
 let x = {};
 x.RetrieveDatabase = (page) => {
   if (!dataStore[page]) dataStore[page] = {};

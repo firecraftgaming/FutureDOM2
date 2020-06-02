@@ -9,6 +9,7 @@ const ResponseObject = require("./Modules/ResponseObject.js");
 const DocumentModel = require("./Modules/DocumentModel.js");
 const ObjectModel = require("./Modules/ObjectModel.js");
 const PageDatabase = require("./Modules/PageDatabase.js");
+const PublicDatabase = require("./Modules/PublicDatabase.js");
 
 const config = JSON.parse(fs.readFileSync("config.json"));
 
@@ -17,7 +18,7 @@ let currentID = 0;
 const server = http.createServer((req, res) => {
   //Store the response object with the ID as key so it can be accessed from define("preload").
   ResponseObject.res[currentID.toString()] = res;
-  PageLoader.Parse(req, currentID, ResponseObject, PageDatabase); 
+  PageLoader.Parse(req, currentID, ResponseObject, PageDatabase, PublicDatabase); 
   currentID++;
 }).listen(config.port);
 
@@ -33,8 +34,7 @@ wss.on("connection", (ws, req) => {
   //Call PostLoad
   PageLoader.Defined.postload[ID.toString()]({
     GetObject: selector => DocumentModel.GetObject(ID, selector, ObjectModel, Response, wss),
-    GetObjectById: id => DocumentModel.GetObjectById(id, ID, ObjectModel, Response, wss),
-    database: PageDatabase.RetrieveDatabase()
+    GetObjectById: id => DocumentModel.GetObjectById(id, ID, ObjectModel, Response, wss)
   });
 
   //Define value return function

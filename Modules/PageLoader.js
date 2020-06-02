@@ -27,7 +27,7 @@ x.ApplyScript = (script, res) => {
 };
 
 //A parsing script this is the main functiont that calls when a page loads
-x.Parse = (req, id, ResponseObject, PageDatabase) => {
+x.Parse = (req, id, ResponseObject, PageDatabase, PublicDatabase) => {
   let res = ResponseObject.res[id.toString()];
 
   //Parse Url
@@ -60,7 +60,8 @@ x.Parse = (req, id, ResponseObject, PageDatabase) => {
   f({
     Echo: v => ResponseObject.Echo(v, id),
     Load: v => ResponseObject.Load(v, id),
-    GetDatabase: _ => PageDatabase.RetrieveDatabase(path)
+    GetDatabase: _ => PageDatabase.RetrieveDatabase(path),
+    GetPublicDatabase: name => PublicDatabase
   });
 
   //stop the response object after preload is done with its logic
