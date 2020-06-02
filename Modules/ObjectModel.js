@@ -39,7 +39,7 @@ x.Copy = (id, selector, wss, Response) => {
     x.InnerHTML(id, clb, selector, wss, Response);
     return a;
   });
-  o.onclick = clb => x.OnClick(id, clb, selector, wss, Response);
+  o.__defineSetter__("onclick", clb => x.OnClick(id, clb, selector, wss, Response));
   o.__defineSetter__("value", v => x.SetValue(id, v, selector, wss));
   o.__defineGetter__("value", _ => {
     var a = {clb: _=>{}};

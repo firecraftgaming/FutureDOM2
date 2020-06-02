@@ -10,11 +10,11 @@ define("postload", function (document) {
     for (var o of database.msgs) s += "<p>" + o + "</p>";
     document.GetObjectById("b").innerHTML = s;
   });
-  document.GetObjectById("a").onclick(_=>{
+  document.GetObjectById("a").onclick = _=>{
     document.GetObjectById("i").value.clb = v=>{
       document.GetObjectById("i").value = "";
       if (name == "") name = v; else database.msgs.push(`${name}: ${v}`);
       for (var o of database.clbs) o();
     };
-  });
+  };
 })
