@@ -1,4 +1,5 @@
 var x = {};
+console.log(0);
 
 x.DocumentModel = global.DocumentModel = global.DocumentModel || require("./Modules/" + "DocumentModel" + ".js");
 x.ObjectModel = global.ObjectModel = global.ObjectModel || require("./Modules/" + "ObjectModel" + ".js");
