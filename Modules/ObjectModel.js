@@ -1,5 +1,5 @@
 let x = {};
-const {DocumentModel, ObjectModel, PageDatabase, PageLoader, PublicDatabase, Response, ResponseObject} = require("./Modules.js");
+const {DocumentModel, ObjectModel, PageDatabase, PageLoader, PublicDatabase, Response, ResponseObject} = require("/Modules.js");
 x.Send = (id, data) => {
   global.wss.connections[id.toString()].send(JSON.stringify(data));
 };
