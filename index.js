@@ -5,7 +5,7 @@ const ws = require("ws");
 
 process.chdir(__dirname);
 
-const {DocumentModel, ObjectModel, PageDatabase, PageLoader, PublicDatabase, Response, ResponseObject} = require("./Modules.js");
+const {DocumentModel, ObjectModel, PageDatabase, PageLoader, PublicDatabase, Response, ResponseObject} = require("./Modules/Modules.js");
 
 const config = JSON.parse(fs.readFileSync("config.json"));
 

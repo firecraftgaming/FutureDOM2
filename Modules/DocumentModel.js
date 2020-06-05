@@ -1,5 +1,5 @@
 let x = {};
-const {DocumentModel, ObjectModel, PageDatabase, PageLoader, PublicDatabase, Response, ResponseObject} = require("../Modules.js");
+const {DocumentModel, ObjectModel, PageDatabase, PageLoader, PublicDatabase, Response, ResponseObject} = require("./Modules.js");
 
 x.GetObject = (pageid, selector) => {
   return ObjectModel.Copy(pageid, selector, global.wss);

@@ -2,7 +2,7 @@ const vm = require("vm");
 const fs = require("fs");
 
 const config = JSON.parse(fs.readFileSync("config.json"));
-const {DocumentModel, ObjectModel, PageDatabase, PageLoader, PublicDatabase, Response, ResponseObject} = require("../Modules.js");
+const {DocumentModel, ObjectModel, PageDatabase, PageLoader, PublicDatabase, Response, ResponseObject} = require("./Modules.js");
 
 let x = {};
 
