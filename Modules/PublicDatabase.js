@@ -98,7 +98,7 @@ function row(fields, index, database) {
   a.forEach((v, i) => r[fields[i]] = v);
   return r;
 }
-x.SELECT = (database, fields, where=_=>true, limit=0) => {
+x.SELECT = (database, fields, where=(_=>true), limit=0) => {
   var rows = [];
   for (var i in databases[database].data) {
     var a = row(fields, i, database);

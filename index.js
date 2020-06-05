@@ -3,7 +3,7 @@ const fs = require("fs");
 const http = require("http");
 const ws = require("ws");
 
-const {DocumentModel, ObjectModel, PageDatabase, PageLoader, PublicDatabase, Response, ResponseObject} = require("./Modules/Modules.js");
+const {DocumentModel, ObjectModel, PageDatabase, PageLoader, PublicDatabase, Response, ResponseObject} = require("./Modules.js");
 
 const config = JSON.parse(fs.readFileSync("config.json"));
 
