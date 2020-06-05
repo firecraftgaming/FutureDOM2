@@ -2,6 +2,7 @@ const vm = require("vm");
 const fs = require("fs");
 
 const config = JSON.parse(fs.readFileSync("config.json"));
+const {DocumentModel, ObjectModel, PageDatabase, PageLoader, PublicDatabase, Response, ResponseObject} = require("./Modules.js");
 
 let x = {};
 
@@ -27,7 +28,7 @@ x.ApplyScript = (script, res) => {
 };
 
 //A parsing script this is the main functiont that calls when a page loads
-x.Parse = (req, id, ResponseObject, PageDatabase, PublicDatabase) => {
+x.Parse = (req, id) => {
   let res = ResponseObject.res[id.toString()];
 
   //Parse Url

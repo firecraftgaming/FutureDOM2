@@ -1,8 +1,9 @@
 let x = {};
-x.GetObject = (pageid, selector, ObjectModel, Response, wss) => {
-  return ObjectModel.Copy(pageid, selector, wss, Response);
+const {DocumentModel, ObjectModel, PageDatabase, PageLoader, PublicDatabase, Response, ResponseObject} = require("./Modules.js");
+x.GetObject = (pageid, selector) => {
+  return ObjectModel.Copy(pageid, selector, global.wss);
 };
-x.GetObjectById = (id, pageid, ObjectModel, Response, wss) => {
-  return x.GetObject(pageid, "#"+id, ObjectModel, Response, wss);
+x.GetObjectById = (id, pageid) => {
+  return x.GetObject(pageid, "#"+id, global.wss);
 };
 module.exports = x;
